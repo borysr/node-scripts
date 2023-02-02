@@ -1,6 +1,6 @@
 #!/bin/bash 
 
-# script will i
+# script will
 # - load latest docker image for streamr
 # - create diectory ~/.streamRXXXX using the last four characters of the beneficiary key i
 #   as unique ID XXXX
