@@ -1,8 +1,39 @@
-#!/bin/bash -x
-export BENEFICIARY_KEY=0xe726E6E6C9A1Cc2bcDeDed6FeBA5bEC5f51de89b
+#!/bin/bash 
+
+# script will i
+# - load latest docker image for streamr
+# - create diectory ~/.streamRXXXX using the last four characters of the beneficiary key i
+#   as unique ID XXXX
+# - will run container with broker wizard ( usually press enter few times to accept defaults )
+# - will add beneficiary key into config/default.json file
+# - create and start docker container with the name streamRXXXX
+#
+#   test if container is running:
+#       docker ps
+#   test container logs
+#       docker logs streamRXXXX
+#
+# NOTE: you need to have docker installed and have permissions to run docker commands
+
+# set -x
+
+if [ $# -eq 0 ]
+then
+    echo  "Usage: "
+    echo  "${0} <BENEFICIARY_KEY> "
+    exit 1
+fi
 
 BENEFICIARY_KEY=${1}
 
+n=${#BENEFICIARY_KEY};
+
+if [ $n -lt 10 ] 
+then
+    echo  "<BENEFICIARY_KEY> is too short"
+    exit 1
+fi
+	
 # get last 4 characters of the key for unique node name
 export tmp=${BENEFICIARY_KEY:0-4}
 
