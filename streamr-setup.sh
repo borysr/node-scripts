@@ -50,7 +50,7 @@ chmod 777 ${LOCAL_DIR}
 docker run -it -v ${LOCAL_DIR}:${CONTAINER_DIR} streamr/broker-node:latest bin/config-wizard
 
 # add beneficiary public key to the config
-sed -i 's@"brubeckMiner": {}@"brubeckMiner": {"beneficiary_address": "'${BENEFICIARY_KEY}'"}@'t ${LOCAL_DIR}/config/default.json
+sed -i 's@"brubeckMiner": {}@"brubeckMiner": {"beneficiaryAddress": "'${BENEFICIARY_KEY}'"}@' ${LOCAL_DIR}/config/default.json
 
 # run streamr node with as a daemon process with the --restart option and unique name
 docker run -dt --name ${NODE_NAME}  --restart unless-stopped -v ${LOCAL_DIR}:${CONTAINER_DIR} streamr/broker-node:latest
