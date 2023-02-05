@@ -14,6 +14,8 @@
 #       docker logs streamRXXXX
 #
 # NOTE: you need to have docker installed and have permissions to run docker commands
+#       to get permissions to work with dpoecker, try this commands:
+#       > sudo usermod -aG docker ${USER} && newgrp docker && sudo reboot
 
 # set -x
 
